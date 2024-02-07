@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db.models import (Model, CharField, TextField, ForeignKey, CASCADE,
                               UniqueConstraint, SET_NULL, OneToOneField)
 
@@ -49,4 +50,34 @@ class Answer(Model):
             UniqueConstraint(
                 fields=('question', 'text',),
                 name='Unique question and text', ),
+        ]
+
+
+class History(Model):
+    survey = ForeignKey(Survey, on_delete=CASCADE, related_name='survey_history', verbose_name='опрос')
+    user = ForeignKey(settings.AUTH_USER_MODEL, on_delete=CASCADE, related_name='user_history',
+                      verbose_name='пользователь')
+
+    def __str__(self):
+        return f'{self.survey.name} - {self.user.email}'
+
+    class Meta:
+        verbose_name = 'история'
+        verbose_name_plural = 'история'
+
+
+class Result(Model):
+    history = ForeignKey(History, on_delete=CASCADE, related_name='history_results', verbose_name='история')
+    answer = ForeignKey(Answer, on_delete=CASCADE, related_name='answer_results', verbose_name='ответ')
+
+    def __str__(self):
+        return f'{self.history}: {self.answer.text}'
+
+    class Meta:
+        verbose_name = 'результат'
+        verbose_name_plural = 'результаты'
+        constraints = [
+            UniqueConstraint(
+                fields=('history', 'answer',),
+                name='Unique history and answer', ),
         ]
