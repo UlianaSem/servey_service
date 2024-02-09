@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+    {% block content %}
+          <div class="col">
+            <div class="card shadow-sm">
+              <div class="card-header">
+                  <p class="card-text">{{ current_question.text }}</p>
+              </div>
+              {% for answer in current_question.answers.all %}
+                  <div class="card-body">
+                      <div class="btn-group">
+                        <a href="{% url 'main:answer_question' answer.pk %}" type="button" class="btn btn-sm btn-outline-secondary">{{ answer.text }}</a>
+                      </div>
+                  </div>
+              {% endfor %}
+            </div>
+          </div>
+    {% endblock %}
