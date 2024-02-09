@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db.models import (Model, CharField, TextField, ForeignKey, CASCADE,
-                              UniqueConstraint, SET_NULL, OneToOneField)
+                              UniqueConstraint, SET_NULL, OneToOneField, DateTimeField)
+from django.utils import timezone
 
 
 class Survey(Model):
@@ -70,14 +71,11 @@ class Result(Model):
     history = ForeignKey(History, on_delete=CASCADE, related_name='history_results', verbose_name='история')
     answer = ForeignKey(Answer, on_delete=CASCADE, related_name='answer_results', verbose_name='ответ')
 
+    created_at = DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return f'{self.history}: {self.answer.text}'
 
     class Meta:
         verbose_name = 'результат'
         verbose_name_plural = 'результаты'
-        constraints = [
-            UniqueConstraint(
-                fields=('history', 'answer',),
-                name='Unique history and answer', ),
-        ]
