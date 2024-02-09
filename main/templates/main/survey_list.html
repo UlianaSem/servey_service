@@ -7,9 +7,11 @@
               <div class="card-body">
                 <p class="card-text">{{ object.name }}</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <a href="{% url 'main:survey_detail' object.pk %}" type="button" class="btn btn-sm btn-outline-secondary">Пройти опрос</a>
-                  </div>
+                  {% if user.is_authenticated %}
+                      <div class="btn-group">
+                        <a href="{% url 'main:survey_detail' object.pk %}" type="button" class="btn btn-sm btn-outline-secondary">Пройти опрос</a>
+                      </div>
+                  {% endif %}
                 </div>
               </div>
             </div>
