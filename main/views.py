@@ -4,10 +4,10 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.utils.http import urlencode
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 
 from main.models import Survey, Answer, History, Question, Result
-from main.services import get_question
+from main.services import get_question, get_statistics
 
 
 class SurveyListView(ListView):
@@ -24,11 +24,30 @@ class QuestionView(LoginRequiredMixin, View):
         current_question = get_question(questions, answer, question)
 
         if current_question is None:
-            return redirect(reverse('main:survey_list'))
+            params = {
+                'survey': pk
+            }
+
+            return redirect(
+                f"{reverse('main:get_statistics')}?{urlencode(params)}"
+            )
 
         else:
             return render(request, 'main/question.html',
                           context={'current_question': current_question})
+
+
+class StatisticsView(LoginRequiredMixin, TemplateView):
+    template_name = 'main/statistics.html'
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+
+        survey_pk = request.GET.get('survey')
+        statistics = get_statistics(survey_pk)
+        context['statistics'] = statistics
+
+        return self.render_to_response(context)
 
 
 @login_required
@@ -46,5 +65,6 @@ def answer_question(request, pk):
         'answer': answer.pk, 'question': answer.question.pk
     }
 
-    return redirect(f"{reverse('main:survey_detail', 
-                               kwargs={'pk': answer.question.survey.pk})}?{urlencode(params)}")
+    return redirect(
+        f"{reverse('main:survey_detail', kwargs={'pk': answer.question.survey.pk})}?{urlencode(params)}"
+    )

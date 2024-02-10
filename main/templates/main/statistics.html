@@ -1,0 +1,55 @@
+{% extends 'main/base.html' %}
+
+    {% block content %}
+          <div class="col">
+            <div class="card shadow-sm" style="width: 60rem;">
+              <div class="card-header">
+                  <H3 class="card-text">Количество пользователей, прошедших опрос: {{ statistics.total_number }}</H3>
+              </div>
+              <div class="card-body">
+                  <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Вопрос</th>
+                          <th scope="col">Количество ответивших пользователей</th>
+                          <th scope="col">Доля от участников опроса</th>
+                          <th scope="col">Порядковый номер</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for item in statistics.questions %}
+                            <tr>
+                              <th scope="row">{{ item.question_text }}</th>
+                              <td>{{ item.user_count }}</td>
+                              <td>{{ item.proportion }}</td>
+                              <td>{{ item.rank }}</td>
+                            </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+              </div>
+              <div class="card-footer">
+                  <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Ответ</th>
+                          <th scope="col">Вопрос</th>
+                          <th scope="col">Количество пользователей, выбравших этот ответ</th>
+                          <th scope="col">Доля от ответивших участников</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for item in statistics.answers %}
+                            <tr>
+                              <th scope="row">{{ item.answer_text }}</th>
+                              <th>{{ item.question_text }}</th>
+                              <td>{{ item.user_count }}</td>
+                              <td>{{ item.proportion }}</td>
+                            </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+              </div>
+            </div>
+          </div>
+    {% endblock %}
