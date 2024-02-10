@@ -32,6 +32,16 @@
 1. `DATABASES_NAME, DATABASES_USER, DATABASES_PASSWORD, DATABASES_HOST` - данные для подключения к БД
 2. `SECRET_KEY, DEBUG, ALLOWED_HOSTS`
 
+## Тестовые пользователи
+
+1. `email=admin@admin.ru`
+
+    `password=admin`
+
+2. `test@testov.ru`
+
+    `password=test1test`
+
 ## Авторы
 
 UlianaSem
