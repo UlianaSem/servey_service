@@ -1,0 +1,240 @@
+[
+  {
+    "model": "main.survey",
+    "pk": 1,
+    "fields": {
+      "name": "Благоустройство города"
+    }
+  },
+  {
+    "model": "main.survey",
+    "pk": 2,
+    "fields": {
+      "name": "Покупка квартиры"
+    }
+  },
+  {
+    "model": "main.question",
+    "pk": 1,
+    "fields": {
+      "survey": 1,
+      "text": "Нравится ли вам город, в котором вы живете?",
+      "question": null,
+      "answer": null
+    }
+  },
+  {
+    "model": "main.question",
+    "pk": 2,
+    "fields": {
+      "survey": 1,
+      "text": "В каком городе вы живете?",
+      "question": 1,
+      "answer": null
+    }
+  },
+  {
+    "model": "main.question",
+    "pk": 3,
+    "fields": {
+      "survey": 1,
+      "text": "Вы считаете, что в вашем городе слишком много жителей?",
+      "question": null,
+      "answer": 3
+    }
+  },
+  {
+    "model": "main.question",
+    "pk": 4,
+    "fields": {
+      "survey": 1,
+      "text": "Вы считаете, что в вашем городе плохо убирают снег?",
+      "question": null,
+      "answer": 4
+    }
+  },
+  {
+    "model": "main.question",
+    "pk": 5,
+    "fields": {
+      "survey": 1,
+      "text": "Готовы ли вы дополнительно оплачивать уборку снега?",
+      "question": 4,
+      "answer": null
+    }
+  },
+  {
+    "model": "main.question",
+    "pk": 6,
+    "fields": {
+      "survey": 2,
+      "text": "Задумываетесь ли Вы о покупке квартиры?",
+      "question": null,
+      "answer": null
+    }
+  },
+  {
+    "model": "main.question",
+    "pk": 7,
+    "fields": {
+      "survey": 2,
+      "text": "Почему Вы хотите сменить жилье?",
+      "question": null,
+      "answer": 11
+    }
+  },
+  {
+    "model": "main.question",
+    "pk": 8,
+    "fields": {
+      "survey": 2,
+      "text": "Вы собираетесь брать ипотеку для покупки жилья?",
+      "question": 7,
+      "answer": null
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 1,
+    "fields": {
+      "question": 1,
+      "text": "Да"
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 2,
+    "fields": {
+      "question": 1,
+      "text": "Нет"
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 3,
+    "fields": {
+      "question": 2,
+      "text": "Москва"
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 4,
+    "fields": {
+      "question": 2,
+      "text": "Екатеринбург"
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 5,
+    "fields": {
+      "question": 3,
+      "text": "Да"
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 6,
+    "fields": {
+      "question": 3,
+      "text": "Нет"
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 7,
+    "fields": {
+      "question": 4,
+      "text": "Да"
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 8,
+    "fields": {
+      "question": 4,
+      "text": "Нет"
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 9,
+    "fields": {
+      "question": 5,
+      "text": "Да"
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 10,
+    "fields": {
+      "question": 5,
+      "text": "Нет"
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 11,
+    "fields": {
+      "question": 6,
+      "text": "Да"
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 12,
+    "fields": {
+      "question": 6,
+      "text": "Нет"
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 13,
+    "fields": {
+      "question": 7,
+      "text": "Мое жилье старое и требует ремонта"
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 14,
+    "fields": {
+      "question": 7,
+      "text": "Расширение семьи"
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 15,
+    "fields": {
+      "question": 7,
+      "text": "Хочу жить в другом районе/ городе"
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 16,
+    "fields": {
+      "question": 7,
+      "text": "Другое"
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 17,
+    "fields": {
+      "question": 8,
+      "text": "Да"
+    }
+  },
+  {
+    "model": "main.answer",
+    "pk": 18,
+    "fields": {
+      "question": 8,
+      "text": "Нет"
+    }
+  }
+]
